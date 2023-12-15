@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <link rel="shortcut icon" href="./assets/icon/icon.png" type="image/x-icon">
+    <script src="signup.js"></script>
+    <link rel="apple-touch-icon" href="./assets/icon/icon.png">
+    <title>Fly Emirates</title>
+</head>
+
+<body style="background-image: url('./assets/images/backgroundimg/background.jpeg'); 
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;">
+    <div style="display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh; ">
+        <form enctype="multipart/form-data" name="registrationForm" id="registrationForm" action="signup.php" method="post">
+            <div id="tobehidden">
+                <div>
+                    <label for="email" style="margin-right: 25px;">Email:</label>
+                    <input required style="padding: 10px;
+                                    border: 0px solid lightblue;
+                                    margin-bottom: 10px;
+                                    background-color: rgba(6, 213, 250, 0.187);
+                                    border-radius: 5px;" name="email" id="email" type="email">
+                </div>
+                <div>
+                    <label for="name" style="margin-right: 25px;">Name:</label>
+                    <input  required style="padding: 10px;
+                                    border: 0px solid lightblue;
+                                    margin-bottom: 10px;
+                                    background-color: rgba(6, 213, 250, 0.187);
+                                    border-radius: 5px;" name="name" id="name" type="text">
+                </div>
+                <div>
+                    <label for="password" style="margin-right: 3px;" required>Password:</label>
+                    <input required style="padding: 10px;
+                    margin-bottom: 10px;
+                    border: 0px solid lightblue;
+                    background-color: rgba(6, 213, 250, 0.187);;
+                    border-radius: 5px;" name="password" id="password" type="password">
+                </div>
+                <div>
+                    <label for="tel" style="margin-right: -2px;">Telephone:</label>
+                    <input required style="padding: 10px;
+                    margin-bottom: 10px;
+                    border: 0px solid lightblue;
+                    background-color: rgba(6, 213, 250, 0.187);
+                    border-radius: 5px;" name="tel" id="tel" type="text">
+                </div>
+                <div>
+                    Type:
+                    <label style="margin-left: 35px;" for="company" name="company">Company</label>
+                    <input name="type" id="company" type="radio" value="campany">
+                    <label for="passenger" name="passenger">Passenger</label>
+                    <input name="type" id="passenger" type="radio" value="passenger" checked>
+                </div>
+                <div>
+                    <button type="button" id="next-btn" onclick="continueSignUp()" style="padding: 10px;
+                                                background-color: rgba(0, 0, 0, 0);
+                                                color: lightblue;
+                                                border: 1;
+                                                cursor: pointer;
+                                                border-radius: 5px;">Next</button>
+                </div>
+            </div>
+            <div id="passengerform" style="display: none;">
+                <div>
+                    <label for="photo" style="margin-right: 25px;">Profile Picture:</label>
+                    <input style="padding: 10px;
+                                    border: 0px solid lightblue;
+                                    margin-bottom: 10px;
+                                    background-color: rgba(6, 213, 250, 0.187);
+                                    border-radius: 5px;" name="photo" id="photo" type="file" accept=".jpeg,.jpg,.png">
+                </div>
+                <div >
+                    <label for="passportImg" style="margin-right: 25px;">Passport Image:</label>
+                    <input style="padding: 10px;
+                                    border: 0px solid lightblue;
+                                    margin-bottom: 10px;
+                                    background-color: rgba(6, 213, 250, 0.187);
+                                    border-radius: 5px;" name="passport" id="passportImg" type="file" accept=".jpeg,.jpg,.png">
+                </div>
+            </div>
+            <div id="companyform" style="display: none;">
+                <div>
+                    <label for="bio" style="margin-right: 25px;">Bio:</label>
+                    <textarea style="padding: 10px;
+                    margin-bottom: 10px;
+                    border: 0px solid lightblue;
+                    background-color: rgba(6, 213, 250, 0.187);
+                    border-radius: 5px;" name="bio" id="bio" cols="30" rows="10"></textarea>
+                </div>
+                <div>
+                    <label for="address" style="margin-right: 25px;">Address:</label>
+                    <input style="padding: 10px;
+                    margin-bottom: 10px;
+                    border: 0px solid lightblue;
+                    background-color: rgba(6, 213, 250, 0.187);
+                    border-radius: 5px;" name="address" id="address" type="text">
+                </div>
+                <div>
+                    <label for="loc" style="margin-right: 25px;">Location:</label>
+                    <input style="padding: 10px;
+                    margin-bottom: 10px;
+                    border: 0px solid lightblue;
+                    background-color: rgba(6, 213, 250, 0.187);
+                    border-radius: 5px;" name="location" id="loc" type="text">
+                </div>
+                <div>
+                    <label for="username" style="margin-right: 25px;">Username:</label>
+                    <input style="padding: 10px;
+                    margin-bottom: 10px;
+                    border: 0px solid lightblue;
+                    background-color: rgba(6, 213, 250, 0.187);
+                    border-radius: 5px;" name="username" id="username" type="text">
+                </div>
+                <div>
+                    <label for="logo" style="margin-right: 25px;">Logo:</label>
+                    <input style="padding: 10px;
+                                    border: 0px solid lightblue;
+                                    margin-bottom: 10px;
+                                    background-color: rgba(6, 213, 250, 0.187);
+                                    border-radius: 5px;" name="logo" id="logo" type="file" accept=".jpeg,.jpg,.png">
+                </div>
+            </div>
+            <div id="submit-btn" style="display: none;">
+                <input type="submit" style="padding: 10px;
+                                            background-color: rgba(0, 0, 0, 0);
+                                            color: lightblue;
+                                            border: 1;
+                                            cursor: pointer;
+                                            border-radius: 5px; margin-right: 250px;" value="Sign Up">
+                <button type="button" onclick="back()" style="padding: 10px;
+                                                                background-color: rgba(0, 0, 0, 0);
+                                                                color: lightblue;
+                                                                border: 1;
+                                                                cursor: pointer;
+                                                                border-radius: 5px;">Back</button>
+            </div>
+        </form>
+    </div>
+    Don't miss to follow Us on Facebook
+</body>
+
+</html>

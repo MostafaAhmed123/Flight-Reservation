@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 14, 2023 at 02:36 PM
+-- Generation Time: Dec 15, 2023 at 07:57 PM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.10
 
@@ -52,8 +52,7 @@ CREATE TABLE `company` (
   `Account` double NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
-
+--
 --
 -- Table structure for table `flight`
 --
@@ -96,7 +95,8 @@ CREATE TABLE `passenger` (
   `Account` double NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
+--
+
 
 --
 -- Table structure for table `passenger_flight_status`
@@ -116,13 +116,15 @@ CREATE TABLE `passenger_flight_status` (
 -- Indexes for table `city`
 --
 ALTER TABLE `city`
-  ADD PRIMARY KEY (`Name`,`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `Name` (`Name`);
 
 --
 -- Indexes for table `company`
 --
 ALTER TABLE `company`
-  ADD PRIMARY KEY (`Name`,`username`);
+  ADD PRIMARY KEY (`Name`,`username`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `flight`
@@ -135,13 +137,15 @@ ALTER TABLE `flight`
 -- Indexes for table `flight_city`
 --
 ALTER TABLE `flight_city`
-  ADD PRIMARY KEY (`FlightID`,`CityID`);
+  ADD PRIMARY KEY (`FlightID`,`CityID`),
+  ADD KEY `City_FK` (`CityID`);
 
 --
 -- Indexes for table `passenger`
 --
 ALTER TABLE `passenger`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `Email` (`Email`);
 
 --
 -- Indexes for table `passenger_flight_status`
@@ -149,6 +153,28 @@ ALTER TABLE `passenger`
 ALTER TABLE `passenger_flight_status`
   ADD PRIMARY KEY (`FlightID`,`PessangerID`),
   ADD KEY `Passenger_StatusFK` (`PessangerID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `city`
+--
+ALTER TABLE `city`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `flight`
+--
+ALTER TABLE `flight`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `passenger`
+--
+ALTER TABLE `passenger`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
@@ -164,13 +190,13 @@ ALTER TABLE `flight`
 -- Constraints for table `flight_city`
 --
 ALTER TABLE `flight_city`
-  ADD CONSTRAINT `City_FlightFK` FOREIGN KEY (`FlightID`) REFERENCES `flight` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `City_FK` FOREIGN KEY (`CityID`) REFERENCES `city` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `City_FlightFK` FOREIGN KEY (`FlightID`) REFERENCES `flight` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `passenger_flight_status`
 --
 ALTER TABLE `passenger_flight_status`
-  ADD CONSTRAINT `Flight_StatusFK` FOREIGN KEY (`FlightID`) REFERENCES `flight` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `Passenger_StatusFK` FOREIGN KEY (`PessangerID`) REFERENCES `passenger` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
