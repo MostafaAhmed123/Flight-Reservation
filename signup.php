@@ -46,7 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 throw new Exception("Error Processing Query", 1);
             }
             else
-                echo "company signed up successfully";
+                {
+                    echo "company signed up successfully";
+                    sleep(3);
+                    header("Location: ./index.html");
+                }
         } else {
             $photo = $_FILES['photo'];
             $passport = $_FILES['passport'];
@@ -81,15 +85,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 throw new Exception("Error Processing Query", 1);
             }
             else
+            {
                 echo "passenger signed up successfully";
+                sleep(3);
+                header("Location: ./index.html");
+            }
         }
         $context->disconnect();
     } catch (\Throwable $th) {
         // Handle the error as needed, e.g., redirect the user
-        // header("Location: ./registration.html");
         $context->disconnect();
         echo $th->getMessage();
-        exit(); // Make sure to exit to prevent further script execution
+        sleep(5);
+        header("Location: ./signup.html");
     }
 }
+else
+    header("Location: ./signup.html");
 ?>
