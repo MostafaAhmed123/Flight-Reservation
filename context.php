@@ -4,7 +4,7 @@ final class context
     var $db_host = "localhost";
     var $db_name = "flightcompany";
     var $db_user = "root";
-    var $db_password = "12345678";
+    var $db_password = "";
     var $connection;
     function connect()
     {

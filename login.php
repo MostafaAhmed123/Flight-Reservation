@@ -5,7 +5,6 @@ $context = new context();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $context->connect();
     $conn = $context->getConnection();
-
     try {
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -25,42 +24,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['type'] = "company";
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['username'] = $row['username'];
+                $_SESSION['name'] = $row['name'];
+
                 echo "company";
-                sleep(5);
                 $context->disconnect();
-                // header("Location: ./company-home.php");
+                header('Location: /flight-booker/pages/company_home/company_home.php');
                 exit();
-            }
-            else {
+            } else {
                 // Search for user in passenger table
-                $stmt = mysqli_prepare($conn, "SELECT * FROM passenger WHERE Email = ? AND password = ?");
+                $stmt = mysqli_prepare($conn, "SELECT * FROM passenger WHERE email = ? AND password = ?");
                 mysqli_stmt_bind_param($stmt, "ss", $email, $password);
                 mysqli_stmt_execute($stmt);
                 $res = mysqli_stmt_get_result($stmt);
-    
+
                 if ($res) {
                     $row = mysqli_fetch_assoc($res);
                     // Check if the user was found
                     if ($row) {
                         session_start();
-                        
+
                         $_SESSION['type'] = "passenger";
-                        $_SESSION['email'] = $row['Email'];
-                        $_SESSION['id'] = $row['ID'];
+                        $_SESSION['email'] = $row['email'];
+                        $_SESSION['id'] = $row['id'];
+                        $_SESSION['name'] = $row['name'];
                         echo "passenger";
-                        // Redirect to a logged-in page
-    
-                        // sleep(5);
                         $context->disconnect();
-                        // header("Location: ./passenger-home.php");
+                        header('Location: /flight-booker/pages/passenger_home/passenger_home.php');
                         exit();
-                    }
-                    else
+                    } else
                         throw new Exception("Wrong Email or Password", 1);
                 }
+            }
         }
-    } 
-    }catch (\Throwable $th) {
+    } catch (\Throwable $th) {
         $context->disconnect();
         echo $th->getMessage();
         // sleep(5);

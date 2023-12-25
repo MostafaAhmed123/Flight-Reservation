@@ -1,0 +1,248 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+* {
+  box-sizing: border-box;
+}
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+.imgr {
+  max-width: 20%;
+  text-align: center;
+  height: auto;
+  border-radius: 8px;
+}
+#profile-container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#edit-btn {
+  display: block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #084cdf;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+#edit-btn:hover {
+  background-color: #123d9b;
+}
+.edit-btn-flight {
+  display: block;
+  /* margin-top: px; */
+  padding: 8px 16px;
+  background-color: #084cdf;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.edit-btn-flight:hover {
+  background-color: #123d9b;
+}
+
+.mock-container {
+  display: block;
+}
+
+#mock-input {
+  display: none;
+}
+
+#update-btn {
+  display: none;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+table {
+  width: 69%;
+  border-collapse: collapse;
+}
+
+#flights-container th,
+#flights-container td {
+  padding: 8px;
+  text-align: center;
+}
+
+#flights-container th {
+  background-color: #f2f2f2;
+}
+
+/* ?--------------------------------------------------- */
+/* !POP UP FROM HERE */
+
+.header {
+  overflow: hidden;
+  padding: 20px 10px;
+}
+
+.header a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 20px;
+  margin-right: 5px;
+}
+
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.header a.active {
+  background-color: #084cdf;
+  color: white;
+}
+
+.header-right {
+  float: right;
+}
+/* ?------------------------------------------------- */
+/* ! POP UP  FROM HERE */
+.open-button {
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 85px;
+  right: 25px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  /* width: 425px; */
+  height: 400px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 20px;
+  overflow: auto;
+}
+.form-container::-webkit-scrollbar {
+  display: none;
+}
+.message-container {
+  width: 400px;
+  max-height: 350px;
+  padding: 10px;
+  background-color: grey;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+/* Full-width input fields */
+.form-container input[type="text"],
+.form-container input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type="text"]:focus,
+.form-container input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04aa6d;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover,
+.open-button:hover {
+  opacity: 1;
+}
+
+.bold {
+  font-size: 1em;
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+.close-button {
+  border: none;
+  background: none;
+  color: black;
+  cursor: pointer;
+  font-size: 24px;
+  float: right;
+}
+/* ////////////////////////////////////////////////// */
+
+.button-five {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  background-color: #084cdf;
+  border-radius: 25px;
+}
+.button-five:focus {
+  outline: 0;
+}
